@@ -1,0 +1,33 @@
+#!/bin/bash
+
+PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SRC="/usr/local/bin/name-generator"
+if [ "$PWD" == "/usr/local/bin" ]
+then
+	:
+else
+	echo "pwd: $PWD, src: $SRC"
+	SRC="."
+fi
+while getopts ":uh" OPTION;
+do
+	case $OPTION in
+		u )
+			$SRC/get-names.py
+			;;
+		h )
+			echo "Correct Usage: name-gen [-u] [UPDATE]"
+			exit 0
+			;;
+		*)
+			echo "Correct Usage: name-gen [-u] [UPDATE]"
+			exit 1
+			;;
+	esac
+done
+
+NAMES=$($SRC/reformat.sh)
+NAMES=( $NAMES)
+INDEX=$($SRC/random.sh)
+
+echo ${NAMES[INDEX]}
