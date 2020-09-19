@@ -6,7 +6,8 @@ if [ "$PWD" == "/usr/local/bin" ]
 then
 	:
 else
-	echo "pwd: $PWD, src: $SRC"
+	echo "W | YOU ARE USING A LOCAL VERSION OF NAME-GEN"
+	echo "Please use ./install and name-gen to access it."
 	SRC="."
 fi
 while getopts ":uh" OPTION;
@@ -25,6 +26,12 @@ do
 			;;
 	esac
 done
+
+if [ ! -f "$HOME/.names.txt" ]
+then
+	$SRC/name-gen -u
+fi
+
 
 NAMES=$($SRC/reformat.sh)
 NAMES=( $NAMES)

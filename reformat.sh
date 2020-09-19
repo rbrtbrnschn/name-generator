@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-FILE="$PWD/names.txt"
+FILE="$HOME/.names.txt"
 CATFISH=$(cat $FILE | tr -d '[],')
 ARR=( )
 for NAME in $CATFISH

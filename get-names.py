@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
-import requests, json
+import requests, json, os
 from bs4 import BeautifulSoup
 
 #-------------------------HELPER-----------------------------------------
@@ -50,7 +50,8 @@ ol = list(f.children)[8]
 lis = [i.get_text() for x,i in enumerate(ol) if x % 2 != 0]
 
 def update_file(names):
-    pathName = "names.txt"
+    home = os.environ["HOME"]
+    pathName = f"{home}/.names.txt"
     with open(pathName,"w") as file:
         json.dump(names, file)
     return names
