@@ -1,4 +1,4 @@
-# Password Generator
+# Password Generator | Amaya
 
 Why Use This Name Generator?
 - I dont know
